@@ -2,18 +2,18 @@ class MyElement extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
-    this.title = this.getAttribute("title");
-    this.paragraph = this.getAttribute("paragraph");
-    this.img = this.getAttribute("img");
   }
 
   getTemplate() {
     const template = document.createElement("template");
     template.innerHTML = `
       <section>
-        <h2>${this.title}</h2>
-        <p>${this.paragraph}</p>
-        <img src="" alt="">
+        <h2>
+          <slot name="title"></slot>
+        </h2>
+        <p>
+          <slot name="paragraph"></slot>
+        </p>
       </section>
       ${this.getStyles()}
     `;

@@ -2,9 +2,6 @@ class MyElement extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
-    this.title = this.getAttribute("title");
-    this.paragraph = this.getAttribute("paragraph");
-    this.img = this.getAttribute("img");
   }
 
   getTemplate() {

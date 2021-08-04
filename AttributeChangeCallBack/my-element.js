@@ -2,9 +2,22 @@ class MyElement extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
-    this.title = this.getAttribute("title");
-    this.paragraph = this.getAttribute("paragraph");
-    this.img = this.getAttribute("img");
+  }
+
+  static get observerdAttributes() {
+    return ["title", "paragraph", "img"];
+  }
+
+  attributeChangeCallback(attribute, oldAttribute, newAttribute) {
+    if (attribute === "title") {
+      this.title = newAttribute;
+    }
+    if (attribute === "paragraph") {
+      this.paragraph = newAttribute;
+    }
+    if (attribute === "img") {
+      this.img = newAttribute;
+    }
   }
 
   getTemplate() {
@@ -13,7 +26,7 @@ class MyElement extends HTMLElement {
       <section>
         <h2>${this.title}</h2>
         <p>${this.paragraph}</p>
-        <img src="" alt="">
+        <img src=${this.img} alt="">
       </section>
       ${this.getStyles()}
     `;

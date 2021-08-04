@@ -7,7 +7,6 @@ class MyElement extends HTMLElement {
   getTemplate() {
     const template = document.createElement("template");
     template.innerHTML = `
-      <section>
         <h2>
           <slot name="title"></slot>
         </h2>
@@ -15,7 +14,6 @@ class MyElement extends HTMLElement {
           <slot name="paragraph"></slot>
         </p>
         <img src="" alt="">
-      </section>
       ${this.getStyles()}
     `;
     return template;
@@ -24,9 +22,19 @@ class MyElement extends HTMLElement {
   getStyles() {
     return `
     <style>
-    h2 {
-      color: red;
-    }
+      :host {
+        display: inline-grid;
+      }
+      :host([checked][green]) {
+        display: inline-flex;
+        background: green;
+      }
+      :host-context(article.blue) {
+        width:100%;
+      }
+      :host h2 {
+        color: red;
+      }
     </style>
     `;
   }

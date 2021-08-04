@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./index.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <my-element title="I am a title" paragraph="I am a paragraph">
+      <span slot="title">I am a title !!</span>
+      <span class="text" slot="paragraph">I am a paragraph </span>
+    </my-element>
+    <my-element
+      class="segundo"
+      title="I am a title"
+      paragraph="I am a paragraph"
+    >
+      <span slot="title">I am a title !!</span>
+      <span class="text" slot="paragraph">I am a paragraph </span>
+    </my-element>
+    <script type="module" src="./my-element.js"></script>
+  </body>
+</html>

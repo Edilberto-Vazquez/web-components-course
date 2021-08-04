@@ -1,0 +1,8 @@
+my-element {
+  --primary-color: blue;
+  --heading-primary: 40px;
+}
+
+.segundo {
+  --primary-color: green;
+}

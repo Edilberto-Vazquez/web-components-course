@@ -4,22 +4,6 @@ class MyElement extends HTMLElement {
     this.attachShadow({ mode: "open" });
   }
 
-  static get observerdAttributes() {
-    return ["title", "paragraph", "img"];
-  }
-
-  attributeChangeCallback(attribute, oldAttribute, newAttribute) {
-    if (attribute === "title") {
-      this.title = newAttribute;
-    }
-    if (attribute === "paragraph") {
-      this.paragraph = newAttribute;
-    }
-    if (attribute === "img") {
-      this.img = newAttribute;
-    }
-  }
-
   getTemplate() {
     const template = document.createElement("template");
     template.innerHTML = `
@@ -49,6 +33,26 @@ class MyElement extends HTMLElement {
 
   connectedCallback() {
     this.render();
+  }
+
+  static get observedAttributes() {
+    return ["title", "paragraph", "img"];
+  }
+
+  attributeChangedCallback(name, oldValue, newValue) {
+    // if (name === "title") {
+    //   this.title = newValue;
+    // }
+    // if (name === "paragraph") {
+    //   this.paragraph = newValue;
+    // }
+    // if (name === "img") {
+    //   this.img = newValue;
+    // }
+
+    if (oldValue !== newValue) {
+      this[name] = newValue;
+    }
   }
 }
 
